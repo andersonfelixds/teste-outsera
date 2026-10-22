@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API Call</title>
+</head>
+<body>
+    <h1>Testing API Connection</h1>
+    <button onclick="testAPI()">Test API</button>
+    <pre id="result"></pre>
+
+    <script>
+        function testAPI() {
+            const resultEl = document.getElementById('result');
+            resultEl.textContent = 'Testing...\n';
+
+            // Test 1: Direct fetch
+            fetch('http://localhost:3000/awards/producers/intervals')
+                .then(res => {
+                    resultEl.textContent += 'Status: ' + res.status + '\n';
+                    resultEl.textContent += 'Content-Type: ' + res.headers.get('content-type') + '\n';
+                    return res.json();
+                })
+                .then(data => {
+                    resultEl.textContent += 'Data received:\n' + JSON.stringify(data, null, 2);
+                })
+                .catch(err => {
+                    resultEl.textContent += 'Error: ' + err.message;
+                });
+        }
+    </script>
+</body>
+</html>

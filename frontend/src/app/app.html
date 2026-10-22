@@ -1,0 +1,68 @@
+<div class="container">
+  <h1>Golden Raspberry Awards</h1>
+  <p>Producer Award Intervals Analysis</p>
+
+  <button (click)="loadData()" [disabled]="loading">{{ loading ? 'Loading...' : 'Refresh' }}</button>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="intervals">
+    <h2>Minimum Interval Between Wins</h2>
+    <table *ngIf="intervals.min.length > 0; else emptyMin">
+      <thead>
+        <tr>
+          <th>Producer</th>
+          <th>Interval (years)</th>
+          <th>From Year</th>
+          <th>To Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of intervals.min">
+          <td>{{ item.producer }}</td>
+          <td>{{ item.interval }}</td>
+          <td>{{ item.previousWin }}</td>
+          <td>{{ item.followingWin }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #emptyMin>
+      <p><em>No data available</em></p>
+    </ng-template>
+
+    <h2>Maximum Interval Between Wins</h2>
+    <table *ngIf="intervals.max.length > 0; else emptyMax">
+      <thead>
+        <tr>
+          <th>Producer</th>
+          <th>Interval (years)</th>
+          <th>From Year</th>
+          <th>To Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of intervals.max">
+          <td>{{ item.producer }}</td>
+          <td>{{ item.interval }}</td>
+          <td>{{ item.previousWin }}</td>
+          <td>{{ item.followingWin }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #emptyMax>
+      <p><em>No data available</em></p>
+    </ng-template>
+  </div>
+
+  <div *ngIf="aiInteractions">
+    <h2>AI Interaction History</h2>
+    <p *ngIf="aiInteractions.interactions.length === 0"><em>No interactions recorded yet</em></p>
+    <div *ngFor="let interaction of aiInteractions.interactions" class="interaction-card">
+      <p><strong>Tool:</strong> {{ interaction.tool_name }}</p>
+      <p *ngIf="interaction.skill_name"><strong>Skill:</strong> {{ interaction.skill_name }}</p>
+      <p><strong>Timestamp:</strong> {{ interaction.timestamp }}</p>
+      <p><strong>Prompt:</strong> {{ interaction.prompt }}</p>
+      <p><strong>Result:</strong> {{ interaction.result }}</p>
+    </div>
+  </div>
+</div>
