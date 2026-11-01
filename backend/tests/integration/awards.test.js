@@ -65,4 +65,26 @@ describe('GET /awards/producers/intervals', () => {
       expect(singleWinners.has(item.producer)).toBe(false);
     }
   });
+
+  test('arquivo padrão Movielist.csv tem estrutura esperada', async () => {
+    const app = getTestApp();
+    const rows = app.locals.db.prepare('SELECT * FROM movies').all();
+    expect(rows.length).toBeGreaterThan(0);
+    for (const row of rows.slice(0, 5)) {
+      expect(row).toHaveProperty('year');
+      expect(row).toHaveProperty('title');
+      expect(row).toHaveProperty('studios');
+      expect(row).toHaveProperty('producer');
+      expect(row).toHaveProperty('winner');
+    }
+  });
+
+  test('arquivo padrão produz resultado esperado com dados atuais', async () => {
+    const { min, max } = await fetchIntervals(getTestApp());
+    expect(min.length + max.length).toBeGreaterThan(0);
+    const allIntervals = [...min, ...max];
+    for (const item of allIntervals) {
+      expect(item.followingWin - item.previousWin).toBe(item.interval);
+    }
+  });
 });

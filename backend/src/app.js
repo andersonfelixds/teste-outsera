@@ -1,8 +1,10 @@
 import express from 'express';
+import swaggerUi from 'swagger-ui-express';
 import { initializeDatabase } from './database.js';
 import { loadMoviesFromCSV } from './services/csvLoader.js';
 import awardsRoutes from './routes/awardsRoutes.js';
 import aiRoutes from './routes/aiRoutes.js';
+import { swaggerSpec } from './swagger.js';
 
 const db = initializeDatabase();
 loadMoviesFromCSV(db, './data/Movielist.csv');
@@ -22,6 +24,8 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.locals.db = db;
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use('/awards', awardsRoutes);
 app.use('/ai', aiRoutes);

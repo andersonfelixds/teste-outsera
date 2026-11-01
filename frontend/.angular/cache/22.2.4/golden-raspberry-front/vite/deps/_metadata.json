@@ -1,0 +1,50 @@
+{
+  "hash": "a2ac8190",
+  "configHash": "17b88d55",
+  "lockfileHash": "c5219344",
+  "browserHash": "060dc3c9",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "f27512a0",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "cbeaf131",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "96671bae",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "0890c12f",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "_xhr-chunk-BaTRPDi6": {
+      "file": "_xhr-chunk-BaTRPDi6.js",
+      "isDynamicEntry": false
+    },
+    "common-B-DLmDoD": {
+      "file": "common-B-DLmDoD.js",
+      "isDynamicEntry": false
+    },
+    "core-D8opng4d": {
+      "file": "core-D8opng4d.js",
+      "isDynamicEntry": false
+    },
+    "http-DhgNwReG": {
+      "file": "http-DhgNwReG.js",
+      "isDynamicEntry": false
+    }
+  }
+}

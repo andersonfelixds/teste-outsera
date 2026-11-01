@@ -27,7 +27,21 @@ The `start` script runs `node src/server.js` and is meant to serve the API on po
 npm test
 ```
 
-This runs the Jest integration tests (Supertest against the Express app). At the time of writing: 2 suites, 10 tests, all passing.
+This runs the Jest integration tests (Supertest against the Express app). At the time of writing: 2 suites, 12 tests, all passing.
+
+## API Documentation (Swagger)
+
+Quando o servidor está rodando, a documentação interativa do Swagger está disponível em:
+
+```
+http://localhost:3000/api-docs
+```
+
+Lá você pode:
+- Ver todos os endpoints disponíveis
+- Entender os parâmetros de cada rota
+- Ver exemplos de respostas
+- Testar os endpoints diretamente
 
 ## API endpoints
 
